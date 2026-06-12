@@ -29,7 +29,7 @@ const Footer = () => {
           <p className="text-white/60 font-mono text-[9px] md:text-[10px]">&copy; {new Date().getFullYear()} Nikhil | Built with React</p>
         </div>
         <div className="flex flex-col gap-1 md:items-center">
-          <a href="mailto:your@email.com" className="underline hover:text-white transition-colors underline-offset-4 decoration-1 lowercase">your@email.com</a>
+          <a href="mailto:nikhilkishore4220@gmail.com" className="underline hover:text-white transition-colors underline-offset-4 decoration-1 lowercase">your@email.com</a>
         </div>
         <div className="flex flex-col gap-1 md:items-end">
           <a href="#" className="underline hover:text-white transition-colors underline-offset-4 decoration-1">Privacy Policy</a>
