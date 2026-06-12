@@ -10,35 +10,46 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = ['Home', 'About', 'Skills', 'Projects', 'Contact'];
+  const navLinks = ['Home', 'About', 'Skills', 'Projects', 'Experience', 'Contact'];
 
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-      isOpen ? 'bg-[#ff2a2a] py-4' : isScrolled ? 'bg-transparent py-4' : 'bg-transparent py-6'
+      isOpen ? 'bg-[#ff2a2a] py-4' : isScrolled ? 'bg-black/80 backdrop-blur-md py-4' : 'bg-transparent py-6'
     }`}>
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
 
+        {/* Logo */}
         <a href="#" className="text-white text-2xl font-black tracking-tight">
-          Nikhil<span className="text-red-300">.</span>
+          Nikhil<span className="text-[#ff2a2a]">.</span>
         </a>
 
+        {/* Desktop Nav Links */}
         <div className="hidden md:flex space-x-8">
           {navLinks.map((link) => (
             <a key={link} href={`#${link.toLowerCase()}`}
               className="text-white/80 hover:text-white font-medium relative group transition-colors duration-300">
               {link}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-400 transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#ff2a2a] transition-all duration-300 group-hover:w-full"></span>
             </a>
           ))}
         </div>
 
-        <div className="hidden md:block">
+        {/* Desktop Buttons */}
+        <div className="hidden md:flex items-center gap-3">
+          <a href="/Nikhil_Resume.pdf" download="Nikhil_Kishore_Resume.pdf"
+            className="px-5 py-2.5 rounded-full bg-[#ff2a2a] text-white font-semibold hover:bg-red-700 transition-all duration-300 flex items-center gap-2 text-sm">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Resume
+          </a>
           <a href="#contact"
-            className="px-6 py-2.5 rounded-full bg-white/10 border border-white/20 text-white font-semibold hover:bg-white/20 transition-all duration-300 backdrop-blur-md">
+            className="px-5 py-2.5 rounded-full bg-white/10 border border-white/20 text-white font-semibold hover:bg-white/20 transition-all duration-300 backdrop-blur-md text-sm">
             Hire Me
           </a>
         </div>
 
+        {/* Mobile Hamburger */}
         <div className="md:hidden">
           <button onClick={() => setIsOpen(!isOpen)} className="text-white p-2">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -50,8 +61,9 @@ const Navbar = () => {
         </div>
       </div>
 
+      {/* Mobile Menu */}
       <div className={`md:hidden absolute top-full left-0 w-full transition-all duration-300 overflow-hidden ${
-        isOpen ? 'max-h-96 py-4 opacity-100 bg-[#ff2a2a] shadow-2xl' : 'max-h-0 opacity-0'
+        isOpen ? 'max-h-screen py-4 opacity-100 bg-[#ff2a2a] shadow-2xl' : 'max-h-0 opacity-0'
       }`}>
         <div className="flex flex-col px-6 space-y-4">
           {navLinks.map((link) => (
@@ -60,8 +72,20 @@ const Navbar = () => {
               {link}
             </a>
           ))}
+
+          {/* Mobile Resume Button */}
+          <a href="/Nikhil_Resume.pdf" download="Nikhil_Kishore_Resume.pdf"
+            onClick={() => setIsOpen(false)}
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-black text-white font-black hover:bg-white hover:text-[#ff2a2a] transition-colors text-center shadow-lg mt-2">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Download Resume
+          </a>
+
+          {/* Mobile Hire Me Button */}
           <a href="#contact" onClick={() => setIsOpen(false)}
-            className="inline-block px-6 py-3 rounded-full bg-white text-[#ff2a2a] font-black hover:bg-black hover:text-white transition-colors text-center shadow-lg mt-2">
+            className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white text-[#ff2a2a] font-black hover:bg-black hover:text-white transition-colors text-center shadow-lg">
             Hire Me
           </a>
         </div>
