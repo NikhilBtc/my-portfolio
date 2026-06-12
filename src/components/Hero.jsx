@@ -6,13 +6,27 @@ import heroVideo from '../assets/hero-video/hero-video.mp4';
 const Hero = () => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [started, setStarted] = useState(false);
 
   useEffect(() => {
     AOS.init({ duration: 1000, once: true, easing: 'ease-out' });
   }, []);
 
+  const handleStart = () => {
+    setStarted(true);
+    if (videoRef.current) {
+      videoRef.current.muted = false;
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
+  };
+
   const toggleVideo = (e) => {
     e.stopPropagation();
+    if (!started) {
+      handleStart();
+      return;
+    }
     if (videoRef.current) {
       if (videoRef.current.paused) {
         videoRef.current.play();
@@ -26,7 +40,29 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative w-full h-screen overflow-hidden bg-black">
-      <video ref={videoRef} loop muted playsInline
+
+      {/* Click to enter overlay */}
+      {!started && (
+        <div
+          onClick={handleStart}
+          className="absolute inset-0 z-30 flex flex-col items-center justify-center bg-black cursor-pointer group">
+          <div className="flex flex-col items-center gap-6">
+            <div className="w-24 h-24 rounded-full border-2 border-white/30 bg-white/5 backdrop-blur-md flex justify-center items-center group-hover:scale-110 group-hover:bg-[#ff2a2a] group-hover:border-[#ff2a2a] transition-all duration-500">
+              <svg className="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+            <p className="text-white text-sm font-bold tracking-[0.3em] uppercase opacity-60 group-hover:opacity-100 transition-opacity">
+              Click to Enter
+            </p>
+          </div>
+
+          {/* Animated border ring */}
+          <div className="absolute w-32 h-32 rounded-full border border-white/10 animate-ping"></div>
+        </div>
+      )}
+
+      <video ref={videoRef} loop playsInline
         className="absolute top-0 left-0 w-full h-full object-cover z-0">
         <source src={heroVideo} type="video/mp4" />
       </video>
