@@ -21,6 +21,10 @@ const Hero = () => {
     }
   };
 
+  const handleVideoEnd = () => {
+    setIsPlaying(false);
+  };
+
   const toggleVideo = (e) => {
     e.stopPropagation();
     if (!started) {
@@ -56,13 +60,15 @@ const Hero = () => {
               Click to Enter
             </p>
           </div>
-
           {/* Animated border ring */}
           <div className="absolute w-32 h-32 rounded-full border border-white/10 animate-ping"></div>
         </div>
       )}
 
-      <video ref={videoRef} loop playsInline
+      <video
+        ref={videoRef}
+        playsInline
+        onEnded={handleVideoEnd}
         className="absolute top-0 left-0 w-full h-full object-cover z-0">
         <source src={heroVideo} type="video/mp4" />
       </video>
