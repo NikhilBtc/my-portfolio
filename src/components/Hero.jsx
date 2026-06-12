@@ -12,10 +12,17 @@ const Hero = () => {
     AOS.init({ duration: 1000, once: true, easing: 'ease-out' });
   }, []);
 
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.loop = false;
+    }
+  }, [started]);
+
   const handleStart = () => {
     setStarted(true);
     if (videoRef.current) {
       videoRef.current.muted = false;
+      videoRef.current.loop = false;
       videoRef.current.play();
       setIsPlaying(true);
     }
@@ -33,6 +40,7 @@ const Hero = () => {
     }
     if (videoRef.current) {
       if (videoRef.current.paused) {
+        videoRef.current.loop = false;
         videoRef.current.play();
         setIsPlaying(true);
       } else {
