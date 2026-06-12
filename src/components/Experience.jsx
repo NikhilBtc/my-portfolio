@@ -27,18 +27,6 @@ const experiences = [
     ],
     tech: ['IoT', 'Firebase', 'Arduino', 'C++', 'Sensors'],
   },
-  {
-    role: 'Automation Testing Intern',
-    company: 'CS Tech Infosolutions',
-    duration: '2025',
-    type: 'Internship',
-    points: [
-      'Built a Selenium + TestNG + Java Maven automation framework using Page Object Model architecture.',
-      'Automated end-to-end test cases for the Calley Teams web application.',
-      'Submitted project via GitHub along with screen recording of test execution for HR review.',
-    ],
-    tech: ['Selenium', 'Java', 'TestNG', 'Maven', 'POM', 'GitHub'],
-  },
 ];
 
 const Experience = () => {
