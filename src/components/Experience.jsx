@@ -4,28 +4,26 @@ import 'aos/dist/aos.css';
 
 const experiences = [
   {
-    role: 'Data Analysis Intern',
-    company: 'Cognifyz Technologies',
-    duration: '2024',
+    role: 'AI/ML in Healthcare Intern',
+    company: 'Wekan',
+    duration: '06/2026 – Present',
     type: 'Internship',
     points: [
-      'Performed data cleaning, exploration, and visualization on real-world datasets using Python and Pandas.',
-      'Built a restaurant rating predictor model using scikit-learn achieving strong prediction accuracy.',
-      'Created visual reports with Matplotlib and Seaborn to communicate insights to stakeholders.',
+      'Engineering a Python-based DICOM Migration & Verification pipeline (leveraging pydicom) that automates load, verification, de-identification, and migration stages for medical imaging data — reducing manual handling of sensitive patient scans.',
+      'Contributing to VALOR, an LLM-driven radiology report generation system engineered to reduce hallucinations in AI-generated clinical reports, while building foundational expertise in the DICOM standard and healthcare data pipelines.',
     ],
-    tech: ['Python', 'Pandas', 'scikit-learn', 'Matplotlib', 'Seaborn'],
+    tech: ['Python', 'pydicom', 'DICOM', 'LLMs', 'Healthcare Data'],
   },
   {
-    role: 'IoT Intern',
-    company: 'CodTech IT Solutions',
-    duration: '2024',
+    role: 'Data Analysis Intern',
+    company: 'Cognifyz Technologies',
+    duration: '02/2026 – 03/2026',
     type: 'Internship',
     points: [
-      'Developed a smart lighting system using IoT sensors and real-time Firebase integration.',
-      'Programmed microcontrollers for automated room occupancy detection and light control.',
-      'Documented system architecture and tested hardware-software integration end-to-end.',
+      'Developed and optimized Random Forest and Decision Tree models using Python (Pandas) to predict restaurant ratings, achieving high accuracy through comparative performance analysis.',
+      'Conducted advanced EDA and feature engineering using Matplotlib and Seaborn to identify key drivers of customer satisfaction and geospatial restaurant trends.',
     ],
-    tech: ['IoT', 'Firebase', 'Arduino', 'C++', 'Sensors'],
+    tech: ['Python', 'Pandas', 'scikit-learn', 'Matplotlib', 'Seaborn'],
   },
 ];
 
@@ -42,7 +40,6 @@ const Experience = () => {
         </div>
 
         <div className="relative">
-          {/* Timeline line */}
           <div className="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-white/10"></div>
 
           <div className="flex flex-col gap-12">
@@ -50,7 +47,6 @@ const Experience = () => {
               <div key={exp.company} data-aos="fade-up" data-aos-delay={i * 150}
                 className="relative pl-12 md:pl-24">
 
-                {/* Timeline dot */}
                 <div className="absolute left-2 md:left-6 top-2 w-5 h-5 rounded-full bg-[#ff2a2a] border-4 border-black shadow-lg shadow-[#ff2a2a]/30"></div>
 
                 <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 hover:border-[#ff2a2a]/40 transition-all duration-300">
